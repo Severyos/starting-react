@@ -3,9 +3,15 @@ import "./App.css";
 import TodoForm from "./components/TodoForm";
 import TodoItem from "./components/TodoItem";
 
+
 function App() {
   const [todos, setTodos] = useState([]);
+  const [filterText, setFilterText] = useState("");
 
+  function handleFilterTextChange(e) {
+    setFilterText(e.target.value);
+  }
+  
   const addTodo = (text) => {
     let id = 1;
     if(todos.length > 0) {
@@ -21,6 +27,10 @@ function App() {
     setTodos(updatedTodos);
   };
 
+  function clearAllTodos() {
+    setTodos([]);
+  }
+
   const completeTodo = (id) => {
     let updatedTodos = todos.map((todo) => {
       if(todo.id === id) {
@@ -31,6 +41,8 @@ function App() {
     setTodos(updatedTodos)
   }
 
+  
+  
   const importantTodo = (id) => {
     let updatedTodos = todos.map((todo) => {
       if(todo.id === id) {
@@ -38,22 +50,38 @@ function App() {
       }
       return todo
     })
-
+    
     setTodos(updatedTodos)
   }
-  let sortedTodos = todos.sort((a, b) => b.important - a.important)
+
+  const filteredTodos = todos.filter(todo =>
+    todo.text.toLowerCase().includes(filterText.toLowerCase())
+    
+  
+  );
+  let sortedAndFilteredTodos = filteredTodos.sort((a, b) => b.important - a.important)
+
   return (
     <div className="todo-app">
-      <h1>Todo List</h1>
+      <h1>To-do Lista</h1>
       <TodoForm addTodo={addTodo} />
+      <input
+        type="text"
+        onChange={handleFilterTextChange}
+        className="todo-filter"
+        placeholder="Sök Todo"
+      />
       <hr className="seperator"/>
-      {sortedTodos.map((todo) => {
+      {sortedAndFilteredTodos.map((todo) => {
         return (
           <TodoItem removeTodo={removeTodo} completeTodo={completeTodo} importantTodo={importantTodo} todo={todo} key={todo.id}/>
         )
       })}
+      <button onClick={clearAllTodos} className="clear-btn">Rensa allt</button>
     </div>
   );
+  
+  
 }
 
 export default App;

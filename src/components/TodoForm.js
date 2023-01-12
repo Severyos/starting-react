@@ -9,7 +9,7 @@ export default function TodoForm(props) {
     props.addTodo(input)
     setInput("")
   }
-
+  
   return (
     <form onSubmit={handleSubmit} className="todo-form">
       <input
@@ -21,4 +21,7 @@ export default function TodoForm(props) {
       <button type="submit" className="todo-button">Lägg till</button>
     </form>
   );
+  
+
+
 }

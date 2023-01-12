@@ -26,6 +26,24 @@ body {
   padding-bottom: 32px;
 }
 
+.clear-btn {
+  padding: 16px;
+  margin-left: 145px;
+  margin-top: 50px;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  outline: none;
+  background: linear-gradient(
+    90deg,
+    rgba(17, 122, 255, 1) 0%,
+    rgba(20, 159, 255, 1) 100%
+  );
+  color: white;
+  text-transform: capitalize;
+  width: 400px;
+}
+
 .important-btn {
   margin-right: 5px;
   width: 20px;
@@ -47,7 +65,7 @@ h1 {
 }
 
 .todo-form {
-  margin-bottom: 32px;
+  margin-bottom: 10px;
 }
 
 .todo-input {
@@ -107,4 +125,15 @@ h1 {
   width: 80%;
   align-self: center;
   background-color: black;
+}
+
+.todo-filter {
+  padding: 14px 32px 14px 16px;
+  border-radius: 4px 0 0 4px;
+  border: 2px solid rgba(17, 122, 255, 1);
+  outline: none;
+  width: 400px;
+  margin-left: 145px;
+  margin-bottom: 10px;
+  
 }
